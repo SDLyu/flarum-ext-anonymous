@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Flarum\Migrations\Migration;
+use Flarum\Database\Migration;
 
 return Migration::addColumns('posts', [
     'is_anonymous' => ['boolean', 'default' => 1]
