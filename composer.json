@@ -12,14 +12,14 @@
     ],
     "support": {
         "issues": "https://github.com/SDLyu/flarum-ext-anonymous/issues",
-        "source": "https://github.com/SDLyu/flarum-ext-anonymous/issues"
+        "source": "https://github.com/SDLyu/flarum-ext-anonymous"
     },
     "require": {
         "flarum/core": "^0.1.0-beta.6"
     },
     "autoload": {
         "psr-4": {
-            "Flarum\\Anonymous\\": "src/"
+            "Sdlyu\\Anonymous\\": "src/"
         }
     }
 }

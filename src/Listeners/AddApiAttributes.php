@@ -1,4 +1,4 @@
-<?php namespace Flarum\Instructions\Listeners;
+<?php namespace Sdlyu\Anonymous\Listeners;
 
 use Flarum\Events\RegisterLocales;
 use Flarum\Events\ApiAttributes;

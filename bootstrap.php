@@ -1,5 +1,9 @@
 <?php
 
-require __DIR__.'/vendor/autoload.php';
+use Illuminate\Contracts\Events\Dispatcher;
 
-return 'Flarum\Instructions\Extension';
+use Sdlyu\Anonymous\Listeners;
+
+return function (Dispatcher $events) {
+    $events->subscribe(Listener\AddClientAssets::class);
+};
