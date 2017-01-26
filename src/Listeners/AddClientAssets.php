@@ -24,7 +24,7 @@ class AddClientAssets
             __DIR__.'/../../less/forum/extension.less'
         ]);
 
-        $event->forumBootstrapper('instructions/main');
+        $event->forumBootstrapper('sdlyu/anonymous/main');
 
         $event->forumTranslations([
             // 'instructions.hello_world'
@@ -35,7 +35,7 @@ class AddClientAssets
             __DIR__.'/../../less/admin/extension.less'
         ]);
 
-        $event->adminBootstrapper('instructions/main');
+        $event->adminBootstrapper('sdlyu/anonymous/main');
 
         $event->adminTranslations([
             // 'instructions.hello_world'

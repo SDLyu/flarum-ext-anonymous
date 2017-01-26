@@ -6,4 +6,5 @@ use Sdlyu\Anonymous\Listeners;
 
 return function (Dispatcher $events) {
     $events->subscribe(Listeners\AddClientAssets::class);
+    $events->subscribe(Listeners\AddPostAnonymousAttributes::class);
 };
