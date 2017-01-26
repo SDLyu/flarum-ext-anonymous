@@ -1,19 +1,19 @@
 <?php namespace Sdlyu\Anonymous\Listeners;
 
 use DirectoryIterator;
-use Flarum\Events\RegisterLocales;
-use Flarum\Events\BuildClientView;
+use Flarum\Event\ConfigureLocales;
+use Flarum\Event\ConfigureClientView;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class AddClientAssets
 {
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(RegisterLocales::class, [$this, 'addLocale']);
-        $events->listen(BuildClientView::class, [$this, 'addAssets']);
+        $events->listen(ConfigureLocales::class, [$this, 'addLocale']);
+        $events->listen(ConfigureClientView::class, [$this, 'addAssets']);
     }
 
-    public function addAssets(BuildClientView $event)
+    public function addAssets(ConfigureClientView $event)
     {
         $event->forumAssets([
             __DIR__.'/../../js/forum/dist/extension.js',
@@ -38,7 +38,7 @@ class AddClientAssets
         ]);
     }
 
-    public function addLocale(RegisterLocales $event)
+    public function addLocale(ConfigureLocales $event)
     {
         foreach (new DirectoryIterator(__DIR__.'/../../locale') as $file) {
             if ($file->isFile() && in_array($file->getExtension(), ['yml', 'yaml'])) {

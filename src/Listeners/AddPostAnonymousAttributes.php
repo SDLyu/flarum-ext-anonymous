@@ -16,7 +16,7 @@ class AddPostAnonymousAttributes
     public function prepareApiAttributes(PrepareApiAttributes $event)
     {
         if ($event->isSerializer(UserSerializer::class)) {
-            $event->attributes['username'] = $this->settings->get('flarum-anonymous.forum.anonymous', 'local');
+            $event->attributes['username'] = app('translator')->trans('flarum-anonymous.forum.anonymous');
             $event->attributes['email'] = null;
         }
     }
