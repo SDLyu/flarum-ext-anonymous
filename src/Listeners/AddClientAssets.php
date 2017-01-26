@@ -14,7 +14,11 @@ class AddClientAssets
 
     public function addLocale(RegisterLocales $event)
     {
-        $event->addTranslations('en', __DIR__.'/../../locale/en.yml');
+        foreach (new DirectoryIterator(__DIR__.'/../../locale') as $file) {
+            if ($file->isFile() && in_array($file->getExtension(), ['yml', 'yaml'])) {
+                $event->locales->addTranslations($file->getBasename('.'.$file->getExtension()), $file->getPathname());
+            }
+        }
     }
 
     public function addAssets(BuildClientView $event)

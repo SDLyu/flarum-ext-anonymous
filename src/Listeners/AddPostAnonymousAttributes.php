@@ -1,7 +1,7 @@
 <?php namespace Sdlyu\Anonymous\Listeners;
 
 use Flarum\Event\PrepareApiAttributes;
-use Flarum\Api\Serializer\PostSerializer;
+use Flarum\Api\Serializer\UserSerializer;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class AddPostAnonymousAttributes
@@ -15,8 +15,9 @@ class AddPostAnonymousAttributes
 
     public function prepareApiAttributes(PrepareApiAttributes $event)
     {
-        if ($event->isSerializer(PostSerializer::class)) {
-            $event->attributes['isAnonymous'] = (bool) $event->model->is_anonymous;
+        if ($event->isSerializer(UserSerializer::class)) {
+            $event->attributes['username'] = $this->settings->get('flarum-anonymous.forum.anonymous', 'local');
+            $event->attributes['email'] = null;
         }
     }
 }
