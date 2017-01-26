@@ -18,7 +18,7 @@ class AddClientAssets
     {
         if ($event->isForum()) {
             $event->addAssets([
-                __DIR__ . '/../../less/forum/upload.less',
+                __DIR__ . '/../../less/forum/extension.less',
                 __DIR__ . '/../../js/forum/dist/extension.js'
             ]);
             $event->addBootstrapper('sdlyu/anonymous/main');
@@ -29,7 +29,7 @@ class AddClientAssets
     {
         if ($event->isAdmin()) {
             $event->addAssets([
-                __DIR__ . '/../../less/admin/settingsPage.less',
+                __DIR__ . '/../../less/admin/extension.less',
                 __DIR__ . '/../../js/admin/dist/extension.js'
             ]);
             $event->addBootstrapper('sdlyu/anonymous/main');
