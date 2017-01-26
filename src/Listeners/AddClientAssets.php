@@ -10,32 +10,30 @@ class AddClientAssets
     public function subscribe(Dispatcher $events)
     {
         $events->listen(ConfigureLocales::class, [$this, 'addLocale']);
-        $events->listen(ConfigureClientView::class, [$this, 'addAssets']);
+        $events->listen(ConfigureClientView::class, [$this, 'addForumAssets']);
+        $events->listen(ConfigureClientView::class, [$this, 'addAdminAssets']);
     }
 
-    public function addAssets(ConfigureClientView $event)
+    public function addForumAssets(ConfigureClientView $event)
     {
-        $event->forumAssets([
-            __DIR__.'/../../js/forum/dist/extension.js',
-            __DIR__.'/../../less/forum/extension.less'
-        ]);
+        if ($event->isForum()) {
+            $event->addAssets([
+                __DIR__ . '/../../less/forum/upload.less',
+                __DIR__ . '/../../js/forum/dist/extension.js'
+            ]);
+            $event->addBootstrapper('sdlyu/anonymous/main');
+        }
+    }
 
-        $event->forumBootstrapper('sdlyu/anonymous/main');
-
-        $event->forumTranslations([
-            // 'instructions.hello_world'
-        ]);
-
-        $event->adminAssets([
-            __DIR__.'/../../js/admin/dist/extension.js',
-            __DIR__.'/../../less/admin/extension.less'
-        ]);
-
-        $event->adminBootstrapper('sdlyu/anonymous/main');
-
-        $event->adminTranslations([
-            // 'instructions.hello_world'
-        ]);
+    public function addAdminAssets(ConfigureClientView $event)
+    {
+        if ($event->isAdmin()) {
+            $event->addAssets([
+                __DIR__ . '/../../less/admin/settingsPage.less',
+                __DIR__ . '/../../js/admin/dist/extension.js'
+            ]);
+            $event->addBootstrapper('sdlyu/anonymous/main');
+        }
     }
 
     public function addLocale(ConfigureLocales $event)
