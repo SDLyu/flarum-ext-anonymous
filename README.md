@@ -1,4 +1,4 @@
-flarum-ext-anonymous
+# flarum-ext-anonymous
 
 A Flarum extension that simply replace username with Anonymous.
 
