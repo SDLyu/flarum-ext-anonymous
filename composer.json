@@ -25,7 +25,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-develop": "dev-master"
+            "dev-develop": "v0.1.0-dev"
         },
         "flarum-extension": {
             "title": "Anonymous",
